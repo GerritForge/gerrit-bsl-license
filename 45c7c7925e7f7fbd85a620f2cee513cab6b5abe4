@@ -173,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc52467e_ff004876",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:28:44Z",
+      "side": 1,
+      "message": "\u003e This should not be another playing that needs to be installed. It should behave more like a library that other plugins depend on and as to their jar.\n\u003e \n\u003e If we update this library, plugins should be updated and rebuilt.\n\nWhy? The library brings the class into the plugin-fatjar and stays there.\nThe only purpose of this class is to redirect to the BSL awareness page.\nThere is no runtime dependency or build.\n\nTwo plugins can have different code for that servlet, and that\u0027s ok.\nDo you see any issues?\n\nThe simplest solution that works is always best IMHO.",
+      "parentUuid": "bbe4ca7a_0a4454ef",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b940cf9_96b54880",
         "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
         "patchSetId": 1
