@@ -221,6 +221,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15d7c1f3_9c1ab78e",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-07-01T19:57:00Z",
+      "side": 1,
+      "message": "\u003e But if the father container different versions of this library,\nfather -\u003e plugin - Sorry, was from my phone.\n\nMy point is, if we modify the gerrit-bsl-licence and rebuild the e.g. groovy-provider, will we have a away to know which version of this library was embedded in the groovy-provider?",
+      "parentUuid": "eb570b51_cc5873de",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b940cf9_96b54880",
         "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
         "patchSetId": 1
