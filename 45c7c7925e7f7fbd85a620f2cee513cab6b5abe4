@@ -197,6 +197,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb570b51_cc5873de",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-07-01T19:38:27Z",
+      "side": 1,
+      "message": "But if the father container different versions of this library, would the version be the same?\n\nThat\u0027s what I was trying to avoid.\n\nIf we don\u0027t care about that, then this is fine.",
+      "parentUuid": "cc52467e_ff004876",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b940cf9_96b54880",
         "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
         "patchSetId": 1
