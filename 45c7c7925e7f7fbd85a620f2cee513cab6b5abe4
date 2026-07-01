@@ -245,6 +245,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7121579f_6a73d6ed",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:58:42Z",
+      "side": 1,
+      "message": "\u003e But if the father container different versions of this library, would the version be the same?\n\nWhich _father_? This is a library included in other plugins: each one carries on its own built-time class and is completely independent. There\u0027s no father-child relationship anywhere: Gerrit plugins are fat-jars and include all their build-time dependencies.\n\n\u003e That\u0027s what I was trying to avoid.\n\u003e \n\u003e If we don\u0027t care about that, then this is fine.\n\nIf you see a problem, let\u0027s discuss it. If there are no problems, I don\u0027t see how more complexity can bring any value.",
+      "parentUuid": "eb570b51_cc5873de",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b940cf9_96b54880",
         "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
         "patchSetId": 1
