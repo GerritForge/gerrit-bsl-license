@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84295d3f_569247d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:15:31Z",
+      "side": 1,
+      "message": "Add a bit more description of what this library is for.",
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37da3a30_e12db051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:15:31Z",
+      "side": 1,
+      "message": "I am missing:\n\n- Jenkinsfile (for build validation)\n- README.md (with some instructions)\n- Tests for some IT validation with Gerrit logins\n- LICENSE (this is BSL as well)",
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7ea5eb_5195229c",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:15:31Z",
+      "side": 1,
+      "message": "We should use the standard rules for Gerrit plugins, so that we inherit all the goodies for building and testing them.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbd4a28c_6b75612c",
         "filename": "MODULE.bazel",
         "patchSetId": 1
@@ -19,6 +76,53 @@
         "startChar": 0,
         "endLine": 1,
         "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fad14d_b4406bf7",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:15:31Z",
+      "side": 1,
+      "message": "I don\u0027t get what the benefit would be, though.\nOur CI already builds with the latest and greatest of the corresponding stable branches: what are we aiming to get with this manual versioning?",
+      "parentUuid": "cbd4a28c_6b75612c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b940cf9_96b54880",
+        "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:15:31Z",
+      "side": 1,
+      "message": "This isn\u0027t managing any license.\n\nAlso, we should prepend the namespace `gerrit.plugins`\n\n\n\n```suggestion\npackage com.gerritforge.gerrit.plugins.bsl;\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 43
       },
       "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
