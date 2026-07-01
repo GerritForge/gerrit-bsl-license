@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbe4ca7a_0a4454ef",
+        "filename": "MODULE.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-07-01T19:25:02Z",
+      "side": 1,
+      "message": "This should not be another playing that needs to be installed. It should behave more like a library that other plugins depend on and as to their jar.\n\nIf we update this library, plugins should be updated and rebuilt.\n\nSure, we can have stable branches for this library but don\u0027t think it\u0027ll be needed? But sure, can discuss that.\n\nAt least that\u0027s how I see it anyway.",
+      "parentUuid": "c3fad14d_b4406bf7",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b940cf9_96b54880",
         "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
         "patchSetId": 1
