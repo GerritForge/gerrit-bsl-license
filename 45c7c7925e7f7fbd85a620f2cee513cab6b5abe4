@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d08baa70_1a867617",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84295d3f_569247d9",
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "37da3a30_e12db051",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2026-07-01T19:15:31Z",
       "side": 1,
       "message": "We should use the standard rules for Gerrit plugins, so that we inherit all the goodies for building and testing them.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8f6321_d39194db",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7ea5eb_5195229c",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -118,6 +160,30 @@
       "writtenOn": "2026-07-01T19:15:31Z",
       "side": 1,
       "message": "This isn\u0027t managing any license.\n\nAlso, we should prepend the namespace `gerrit.plugins`\n\n\n\n```suggestion\npackage com.gerritforge.gerrit.plugins.bsl;\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "45c7c7925e7f7fbd85a620f2cee513cab6b5abe4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1dd451_a2c0cc77",
+        "filename": "src/main/java/com/gerritforge/bsl/licence/manager/BslLicenceHttpModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-07-01T19:19:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b940cf9_96b54880",
       "range": {
         "startLine": 12,
         "startChar": 36,
