@@ -18,11 +18,12 @@ import static javax.servlet.http.HttpServletResponse.SC_MOVED_TEMPORARILY;
 
 import com.google.common.base.Strings;
 import com.google.common.flogger.FluentLogger;
-import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.config.CanonicalWebUrl;
 import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.plugincontext.PluginSetContext;
+import com.google.gerrit.server.plugincontext.PluginSetEntryContext;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.io.IOException;
@@ -30,27 +31,36 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
+import java.util.Set;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Singleton
 class RedirectAdminsToBslUrl implements WebLoginListener {
   public static final String BSL_BASE_URL = "https://bsl.gerritforge.com";
+  public static final String BSL_REDIRECTION_DONE =
+      RedirectAdminsToBslUrl.class.getCanonicalName() + ".done";
 
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+  public static final String REDIRECT_ADMINS_TO_BSL_CLASS_NAME =
+      RedirectAdminsToBslUrl.class.getName();
 
   private final PermissionBackend permissionBackend;
-  private final String pluginName;
   private final String canonicalWebUrl;
+  private final PluginSetContext<WebLoginListener> pluginsWebLoginListeners;
 
   @Inject
   RedirectAdminsToBslUrl(
       PermissionBackend permissionBackend,
-      @PluginName String pluginName,
-      @CanonicalWebUrl String canonicalWebUrl) {
+      @CanonicalWebUrl String canonicalWebUrl,
+      PluginSetContext<WebLoginListener> pluginsWebLoginListeners) {
     this.permissionBackend = permissionBackend;
-    this.pluginName = pluginName;
     this.canonicalWebUrl = canonicalWebUrl;
+    this.pluginsWebLoginListeners = pluginsWebLoginListeners;
   }
 
   @Override
@@ -58,7 +68,8 @@ class RedirectAdminsToBslUrl implements WebLoginListener {
       throws IOException {
     if (isLoginRedirect(response)
         && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER)
-        && !hasValidLicence()) {
+        && !hasValidLicence()
+        && needsBslRedirection(request)) {
       String callbackLocation = Strings.nullToEmpty(response.getHeader(LOCATION));
       String redirectUrl = buildRedirectUrl(callbackLocation);
       response.setHeader(LOCATION, redirectUrl);
@@ -67,7 +78,32 @@ class RedirectAdminsToBslUrl implements WebLoginListener {
           "[BSL License] Redirecting admin %s to BSL awareness page '%s' instead of location"
               + " '%s'",
           user, redirectUrl, callbackLocation);
+
+      setBslRedirectionDone(request);
     }
+  }
+
+  private static void setBslRedirectionDone(HttpServletRequest request) {
+    request.setAttribute(BSL_REDIRECTION_DONE, Boolean.TRUE);
+  }
+
+  private static boolean needsBslRedirection(HttpServletRequest request) {
+    return request.getAttribute(BSL_REDIRECTION_DONE) != Boolean.TRUE;
+  }
+
+  private Set<String> allPluginsBslRedirects() {
+    return StreamSupport.stream(
+            Spliterators.spliteratorUnknownSize(
+                pluginsWebLoginListeners.iterator(), Spliterator.ORDERED),
+            false)
+        .filter(RedirectAdminsToBslUrl::isRedirectAdminsToBslUrlFilter)
+        .map(PluginSetEntryContext::getPluginName)
+        .collect(Collectors.toSet());
+  }
+
+  private static boolean isRedirectAdminsToBslUrlFilter(
+      PluginSetEntryContext<WebLoginListener> pluginContext) {
+    return pluginContext.get().getClass().getName().equals(REDIRECT_ADMINS_TO_BSL_CLASS_NAME);
   }
 
   private static boolean isLoginRedirect(HttpServletResponse response) {
@@ -77,7 +113,9 @@ class RedirectAdminsToBslUrl implements WebLoginListener {
 
   private String buildRedirectUrl(String responseLocation) {
     StringBuilder url = new StringBuilder(BSL_BASE_URL);
-    url.append("?plugin=").append(URLEncoder.encode(pluginName, StandardCharsets.UTF_8));
+    Set<String> pluginsWithWebLoginFilters = allPluginsBslRedirects();
+    String bslPluginNames = String.join(",", pluginsWithWebLoginFilters);
+    url.append("?plugin=").append(URLEncoder.encode(bslPluginNames, StandardCharsets.UTF_8));
 
     URI requestUri;
     if (responseLocation.toLowerCase(Locale.ROOT).startsWith("http")) {
