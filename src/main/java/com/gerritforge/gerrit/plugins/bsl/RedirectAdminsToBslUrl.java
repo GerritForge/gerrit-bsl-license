@@ -40,7 +40,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Singleton
-class RedirectAdminsToBslUrl implements WebLoginListener {
+public class RedirectAdminsToBslUrl implements WebLoginListener {
   public static final String BSL_BASE_URL = "https://bsl.gerritforge.com";
   public static final String BSL_REDIRECTION_DONE =
       RedirectAdminsToBslUrl.class.getCanonicalName() + ".done";
