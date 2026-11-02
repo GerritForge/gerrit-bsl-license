@@ -20,6 +20,12 @@ import com.google.gerrit.acceptance.RestResponse;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.config.GerritConfig;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.junit.Test;
 
 @TestPlugin(
@@ -58,5 +64,23 @@ public class GerritBslLicenseIT extends LightweightPluginDaemonTest {
   public void adminAlreadyLoggedInCallsAreNotRedirected() throws Exception {
     assertThat(adminRestSession.get("/login?account_id=" + admin.id().id()).getStatusCode())
         .isNotEqualTo(SC_MOVED_TEMPORARILY);
+  }
+
+  @Test
+  @GerritConfig(name = "gerrit.installModule", value = GerritBslLibModuleIT.LIB_MODULE_CLASS_NAME)
+  @GerritConfig(name = "auth.type", value = "DEVELOPMENT_BECOME_ANY_ACCOUNT")
+  public void pluginAndLibModuleAdminLoginIsRedirectedOnceListingBoth() throws Exception {
+    RestResponse response = anonymousRestSession.get("/login?account_id=" + admin.id().id());
+
+    assertThat(response.getStatusCode()).isEqualTo(SC_MOVED_TEMPORARILY);
+    String location = response.getHeader(LOCATION);
+    assertThat(location).startsWith(RedirectAdminsToBslUrl.BSL_BASE_URL);
+
+    Map<String, String> params =
+        URLEncodedUtils.parse(URI.create(location), StandardCharsets.UTF_8).stream()
+            .collect(Collectors.toMap(NameValuePair::getName, NameValuePair::getValue));
+    assertThat(Arrays.asList(params.get("plugin").split(",")))
+        .containsExactly("gerrit-bsl-license", GerritBslLibModuleIT.LIB_MODULE_COMPONENT_NAME);
+    assertThat(params.get("returnURL")).doesNotContain(RedirectAdminsToBslUrl.BSL_BASE_URL);
   }
 }
