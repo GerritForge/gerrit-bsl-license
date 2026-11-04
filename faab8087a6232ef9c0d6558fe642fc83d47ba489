@@ -16,6 +16,24 @@
       "message": "Needs to be directed to stable-3.13 when the BSL starts.",
       "revId": "faab8087a6232ef9c0d6558fe642fc83d47ba489",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5430cbc6_20a0014d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-04T13:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600e45ea_7e6a4584",
+      "revId": "faab8087a6232ef9c0d6558fe642fc83d47ba489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
