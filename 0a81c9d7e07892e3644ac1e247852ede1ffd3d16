@@ -183,6 +183,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4599cfc_610652b7",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T18:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec087eff_cfab895e",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "174f749b_98fccd92",
