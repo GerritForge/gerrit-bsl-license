@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a3e196_04261cfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T17:55:19Z",
+      "side": 1,
+      "message": "Yes, replicas.",
+      "parentUuid": "25319637_c4e3eb0e",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aef707b_8401b8e5",
@@ -54,6 +78,30 @@
       "writtenOn": "2026-11-16T15:45:36Z",
       "side": 1,
       "message": "Consider checking for blank or null values.",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be77493d_d666be6d",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T17:55:19Z",
+      "side": 1,
+      "message": "This is called by GF plugins only, we shouldn\u0027t really be calling it with empty names.\n\nI think we should ensure GF plugins call this correctly in this instance.\n\nWDYT?",
+      "parentUuid": "09c62b23_13d2536d",
       "range": {
         "startLine": 52,
         "startChar": 27,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "Why don\u0027t we try to make a `curl` to `bsl.gerritforge.com` with the information we would otherwise include in the redirection?\n\nThe key point here is to have evidence that someone is using BSL without permission: we don\u0027t have access to the Gerrit logs, but we do have access to our frontend.",
       "parentUuid": "846dd293_c218dd44",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec087eff_cfab895e",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T17:55:19Z",
+      "side": 1,
+      "message": "Good point, I\u0027ve done it as a follow-up as it involved a bit of refactoring. Keeps the changes cleaner.",
+      "parentUuid": "51eb5130_d8d9ce24",
       "range": {
         "startLine": 68,
         "startChar": 13,
