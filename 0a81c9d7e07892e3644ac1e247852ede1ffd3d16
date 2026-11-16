@@ -65,6 +65,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36d57ee_a9e17229",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T18:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aef707b_8401b8e5",
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09c62b23_13d2536d",
@@ -244,6 +262,30 @@
       "side": 1,
       "message": "This looks hacky indeed: can you explain the overall design?",
       "parentUuid": "174f749b_98fccd92",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5322d88_14b60a09",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-16T18:42:54Z",
+      "side": 1,
+      "message": "\u003e Any failure here would prevent Gerrit from starting, I believe.\n\n\u003e I think we should avoid it happening. Maybe we could just log it if the registration doesn\u0027t work.\n\nDone\n\n\u003e This looks hacky indeed: can you explain the overall design?\n\nMy current approach:\n- If we\u0027re on a replica, there is no UI to redirect admins too, so log/ping the BSL page once at startup.\n- If there is a UI, inject a new `WebLoginListener` so that when admins login we can apply the same logic we use for normal plugins.\n\nI\u0027m no Guice expert, so if there is a better way of handling this from a Guice perspective, I\u0027m all ears.",
+      "parentUuid": "48c65b05_e95e0d8e",
       "range": {
         "startLine": 76,
         "startChar": 5,
