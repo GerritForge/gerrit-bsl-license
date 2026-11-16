@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aef707b_8401b8e5",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-11-16T15:45:36Z",
+      "side": 1,
+      "message": "Missing tests for this new module",
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c62b23_13d2536d",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-11-16T15:45:36Z",
+      "side": 1,
+      "message": "Consider checking for blank or null values.",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "846dd293_c218dd44",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-11-16T15:45:36Z",
+      "side": 1,
+      "message": "Should we also add the link to `bsl.gerritforge.com` as in the popup?",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174f749b_98fccd92",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-11-16T15:45:36Z",
+      "side": 1,
+      "message": "Any failure here would prevent Gerrit from starting, I believe.\n\nI think we should avoid it happening. Maybe we could just log it if the registration doesn\u0027t work.",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
