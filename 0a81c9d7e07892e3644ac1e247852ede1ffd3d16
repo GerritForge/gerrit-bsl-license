@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25319637_c4e3eb0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-16T17:21:55Z",
+      "side": 1,
+      "message": "What do you mean by HTTP disabled? Can you clarify the E2E use-case of where Gerrit doesn\u0027t have the HTTP module enabled? Do you mean replicas?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1aef707b_8401b8e5",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
         "patchSetId": 4
@@ -66,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51eb5130_d8d9ce24",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-16T17:21:55Z",
+      "side": 1,
+      "message": "Why don\u0027t we try to make a `curl` to `bsl.gerritforge.com` with the information we would otherwise include in the redirection?\n\nThe key point here is to have evidence that someone is using BSL without permission: we don\u0027t have access to the Gerrit logs, but we do have access to our frontend.",
+      "parentUuid": "846dd293_c218dd44",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "174f749b_98fccd92",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
         "patchSetId": 4
@@ -77,6 +124,30 @@
       "writtenOn": "2026-11-16T15:45:36Z",
       "side": 1,
       "message": "Any failure here would prevent Gerrit from starting, I believe.\n\nI think we should avoid it happening. Maybe we could just log it if the registration doesn\u0027t work.",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "0a81c9d7e07892e3644ac1e247852ede1ffd3d16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c65b05_e95e0d8e",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/BslLibModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-16T17:21:55Z",
+      "side": 1,
+      "message": "This looks hacky indeed: can you explain the overall design?",
+      "parentUuid": "174f749b_98fccd92",
       "range": {
         "startLine": 76,
         "startChar": 5,
