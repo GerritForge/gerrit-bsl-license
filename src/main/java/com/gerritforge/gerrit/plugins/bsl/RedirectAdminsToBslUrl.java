@@ -18,6 +18,7 @@ import static javax.servlet.http.HttpServletResponse.SC_MOVED_TEMPORARILY;
 
 import com.google.common.base.Strings;
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.config.CanonicalWebUrl;
@@ -112,20 +113,22 @@ class RedirectAdminsToBslUrl implements WebLoginListener {
   }
 
   private String buildRedirectUrl(String responseLocation) {
-    StringBuilder url = new StringBuilder(BSL_BASE_URL);
-    Set<String> pluginsWithWebLoginFilters = allPluginsBslRedirects();
-    String bslPluginNames = String.join(",", pluginsWithWebLoginFilters);
-    url.append("?plugin=").append(URLEncoder.encode(bslPluginNames, StandardCharsets.UTF_8));
-
     URI requestUri;
     if (responseLocation.toLowerCase(Locale.ROOT).startsWith("http")) {
       requestUri = URI.create(responseLocation);
     } else {
       requestUri = URI.create(canonicalWebUrl).resolve(responseLocation);
     }
+    return bslUrl(allPluginsBslRedirects(), requestUri.toString());
+  }
 
-    url.append("&returnURL=")
-        .append(URLEncoder.encode(requestUri.toString(), StandardCharsets.UTF_8));
+  static String bslUrl(Iterable<String> pluginNames, @Nullable String returnUrl) {
+    StringBuilder url = new StringBuilder(BSL_BASE_URL);
+    url.append("?plugin=")
+        .append(URLEncoder.encode(String.join(",", pluginNames), StandardCharsets.UTF_8));
+    if (returnUrl != null) {
+      url.append("&returnURL=").append(URLEncoder.encode(returnUrl, StandardCharsets.UTF_8));
+    }
     return url.toString();
   }
 

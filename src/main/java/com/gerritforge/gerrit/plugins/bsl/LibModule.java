@@ -11,18 +11,26 @@
 
 package com.gerritforge.gerrit.plugins.bsl;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.extensions.registration.RegistrationHandle;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.gerrit.lifecycle.LifecycleModule;
+import com.google.gerrit.server.config.CanonicalWebUrl;
 import com.google.gerrit.server.plugins.PluginGuiceEnvironment;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
+import com.google.inject.Provider;
 import com.google.inject.TypeLiteral;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 
 /** BSL awareness for components loaded as Gerrit lib modules ({@code gerrit.installModule}). */
 public class LibModule extends LifecycleModule {
@@ -39,10 +47,12 @@ public class LibModule extends LifecycleModule {
 
   private static class WebLoginListenerRegistration implements LifecycleListener {
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+    private static final Duration BSL_NOTIFY_TIMEOUT = Duration.ofSeconds(10);
 
     private final String componentName;
     private Injector sysInjector;
     private PluginGuiceEnvironment pluginGuiceEnvironment;
+    private Provider<String> canonicalWebUrl;
     private RegistrationHandle registration;
 
     WebLoginListenerRegistration(String componentName) {
@@ -50,16 +60,20 @@ public class LibModule extends LifecycleModule {
     }
 
     @Inject
-    void init(Injector sysInjector, PluginGuiceEnvironment pluginGuiceEnvironment) {
+    void init(
+        Injector sysInjector,
+        PluginGuiceEnvironment pluginGuiceEnvironment,
+        @CanonicalWebUrl Provider<String> canonicalWebUrl) {
       this.sysInjector = sysInjector;
       this.pluginGuiceEnvironment = pluginGuiceEnvironment;
+      this.canonicalWebUrl = canonicalWebUrl;
     }
 
     @Override
     public void start() {
       Module httpModule = pluginGuiceEnvironment.getHttpModule();
       if (httpModule == null) {
-        logBslNotice();
+        notifyBsl();
         return;
       }
 
@@ -72,8 +86,13 @@ public class LibModule extends LifecycleModule {
       } catch (RuntimeException e) {
         logger.atWarning().withCause(e).log(
             "[BSL License] Unable to register the BSL login redirect for %s", componentName);
-        logBslNotice();
+        notifyBsl();
       }
+    }
+
+    private void notifyBsl() {
+      logBslNotice();
+      pingBslUrl();
     }
 
     private void logBslNotice() {
@@ -85,6 +104,37 @@ public class LibModule extends LifecycleModule {
               + " Grant, contact GerritForge at https://gerritforge.com/contact for a"
               + " commercial license.",
           componentName, RedirectAdminsToBslUrl.BSL_BASE_URL);
+    }
+
+    /**
+     * Sends the same request an admin's browser would make when redirected by {@link
+     * RedirectAdminsToBslUrl}. Asynchronous and best effort: never blocks or fails startup.
+     */
+    private void pingBslUrl() {
+      try {
+        String url =
+            RedirectAdminsToBslUrl.bslUrl(ImmutableList.of(componentName), canonicalWebUrl.get());
+        HttpClient.newBuilder()
+            .connectTimeout(BSL_NOTIFY_TIMEOUT)
+            .build()
+            .sendAsync(
+                HttpRequest.newBuilder(URI.create(url)).timeout(BSL_NOTIFY_TIMEOUT).GET().build(),
+                HttpResponse.BodyHandlers.discarding())
+            .whenComplete(
+                (response, error) -> {
+                  if (error != null) {
+                    logger.atWarning().log(
+                        "[BSL License] Unable to reach BSL awareness page '%s': %s", url, error);
+                  } else {
+                    logger.atInfo().log(
+                        "[BSL License] BSL awareness page '%s' returned HTTP %d",
+                        url, response.statusCode());
+                  }
+                });
+      } catch (RuntimeException e) {
+        logger.atWarning().withCause(e).log(
+            "[BSL License] Unable to notify BSL awareness page for %s", componentName);
+      }
     }
 
     @Override
