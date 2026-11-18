@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4f5490_33a17d42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-18T08:58:28Z",
+      "side": 1,
+      "message": "As its predecessor: this makes sense in the `cached-refdb` only. Shall we move it there?",
+      "revId": "5d7e1dbfe3ee28aefab89e4248c5520d553bd355",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
