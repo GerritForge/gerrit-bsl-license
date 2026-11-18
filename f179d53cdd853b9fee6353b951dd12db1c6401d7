@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb59c7d_3d6647ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-18T08:57:33Z",
+      "side": 1,
+      "message": "As discussed yesterday, this approach would make sense for `cached-refdb` only. Worth moving it there?",
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
