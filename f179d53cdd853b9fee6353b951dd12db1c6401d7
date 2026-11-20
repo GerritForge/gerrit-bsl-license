@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e772f2a1_649b484f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "Thinking again, I believe that\u0027s too invasive. I would just avoid doing anything on replicas.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdb59c7d_3d6647ff",
@@ -14,6 +37,224 @@
       "writtenOn": "2026-11-18T08:57:33Z",
       "side": 1,
       "message": "As discussed yesterday, this approach would make sense for `cached-refdb` only. Worth moving it there?",
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa775aa8_286738ac",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "Mention that this should be used when a libModule registers a sys module only.",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3144794a_a63590cf",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "This is a hack: we should document why we are doing it.",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da9a2cf_248a8720",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "It looks like the main purpose *IS* this listener, whilst the module is just the wrapping around it.\n\nConsider inverting the definition: the class is the listener and has a static method called `sysModule()` that returns the module.",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 81
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524ab139_cec83ab4",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "This is a hack, because lib-modules aren\u0027t plugins.",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 81
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e61873a_39e373a4",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "I don\u0027t believe we should log anything and just return without logging on replicas.",
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e0b57c_752ce8c3",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "We should add a comment to this hack describing why we are doing it.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 91
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03a43ce_132e7089",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "Why do we catch the runtime exception here? Do you see any reason why the above should fail?",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2892d2c8_02ef0c02",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "The legal BSL notice is for a human to see on the browser, not to pollute the logs.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524881cd_cd7aef79",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "Not sure if this is needed: this isn\u0027t a plugin, and lib modules cannot be unloaded.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7ea0ed_fcc0fc82",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLibModuleIT.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-20T07:03:21Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is needed: it is already tested in `src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java`",
       "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
