@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1fe421_c52a5757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Really? It\u0027s a single log line when the server start. I don\u0027t think that\u0027s that invasive?",
+      "parentUuid": "e772f2a1_649b484f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdb59c7d_3d6647ff",
@@ -64,6 +88,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84f7dc7_bf60f3e0",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa775aa8_286738ac",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3144794a_a63590cf",
@@ -77,6 +125,30 @@
       "writtenOn": "2026-11-20T07:03:21Z",
       "side": 1,
       "message": "This is a hack: we should document why we are doing it.",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcd20ef_52bce501",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3144794a_a63590cf",
       "range": {
         "startLine": 28,
         "startChar": 23,
@@ -110,6 +182,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b93bd9b_ed2b38d7",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da9a2cf_248a8720",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 81
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524ab139_cec83ab4",
@@ -123,6 +219,30 @@
       "writtenOn": "2026-11-20T07:03:21Z",
       "side": 1,
       "message": "This is a hack, because lib-modules aren\u0027t plugins.",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 81
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e073f3_5d101b1c",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "I\u0027ll resolve this as I mention how we using the PluginGuiceEnvironment in another comment, feel free to re-open if you think it still needs addressing.",
+      "parentUuid": "524ab139_cec83ab4",
       "range": {
         "startLine": 53,
         "startChar": 36,
@@ -150,6 +270,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4e4919_577edb37",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "I\u0027ll resolve this one as we\u0027re already reviewing this in the commit message comment.",
+      "parentUuid": "8e61873a_39e373a4",
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7e0b57c_752ce8c3",
@@ -163,6 +301,30 @@
       "writtenOn": "2026-11-20T07:03:21Z",
       "side": 1,
       "message": "We should add a comment to this hack describing why we are doing it.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 91
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae22c6f_e863f57a",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e0b57c_752ce8c3",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -196,6 +358,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a4ff36_ce9922bf",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03a43ce_132e7089",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2892d2c8_02ef0c02",
@@ -209,6 +395,30 @@
       "writtenOn": "2026-11-20T07:03:21Z",
       "side": 1,
       "message": "The legal BSL notice is for a human to see on the browser, not to pollute the logs.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bc7c69_22073c7d",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "I\u0027ll resolve this as we\u0027re already discussing it in the commit message.",
+      "parentUuid": "2892d2c8_02ef0c02",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -242,6 +452,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "237800b6_2a37ce34",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/LibModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "524881cd_cd7aef79",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a7ea0ed_fcc0fc82",
@@ -255,6 +489,24 @@
       "writtenOn": "2026-11-20T07:03:21Z",
       "side": 1,
       "message": "I don\u0027t believe this is needed: it is already tested in `src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java`",
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1fe89d_68e0827d",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLibModuleIT.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-11-20T13:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a7ea0ed_fcc0fc82",
       "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
