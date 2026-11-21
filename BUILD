@@ -7,6 +7,7 @@ load(
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
+load("//tools/bzl:javadoc.bzl", "java_doc")
 
 gerrit_plugin(
     name = "gerrit-bsl-license",
@@ -22,4 +23,11 @@ junit_tests(
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":gerrit-bsl-license__plugin",
     ],
+)
+
+java_doc(
+    name = "gerrit-bsl-license-javadoc",
+    libs = [":gerrit-bsl-license__plugin"],
+    pkgs = ["com.gerritforge"],
+    title = "Gerrit BSL License",
 )
