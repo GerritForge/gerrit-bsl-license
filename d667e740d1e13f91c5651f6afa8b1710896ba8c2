@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3013bc_2a40cd6e",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-21T01:16:45Z",
+      "side": 1,
+      "message": "We are missing the test case where the HTTP daemon is disabled.",
+      "revId": "d667e740d1e13f91c5651f6afa8b1710896ba8c2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
