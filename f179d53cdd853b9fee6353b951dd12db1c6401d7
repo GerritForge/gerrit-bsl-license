@@ -48,6 +48,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf98761_da24adaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-21T01:11:39Z",
+      "side": 1,
+      "message": "The description is also incorrect: this isn\u0027t a condition on replicas at all, but only when Gerrit is explicitly started without an httpd on it.",
+      "parentUuid": "0d1fe421_c52a5757",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "f179d53cdd853b9fee6353b951dd12db1c6401d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fdb59c7d_3d6647ff",
