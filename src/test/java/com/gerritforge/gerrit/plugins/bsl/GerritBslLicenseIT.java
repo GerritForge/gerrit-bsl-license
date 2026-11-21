@@ -16,16 +16,35 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
+import com.google.gerrit.acceptance.NoHttpd;
 import com.google.gerrit.acceptance.RestResponse;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.acceptance.config.GerritConfig;
+import com.google.inject.AbstractModule;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.junit.Test;
 
 @TestPlugin(
     name = "gerrit-bsl-license",
     httpModule = "com.gerritforge.gerrit.plugins.bsl.HttpModule")
 public class GerritBslLicenseIT extends LightweightPluginDaemonTest {
+  private static final String LIB_MODULE_CLASS_NAME =
+      "com.gerritforge.gerrit.plugins.bsl.GerritBslLicenseIT$TestLibModule";
+  private static final String LIB_MODULE_COMPONENT_NAME = "bsl-test-lib-module";
+
+  /** Simulates a BSL component deployed via {@code gerrit.installModule}. */
+  public static class TestLibModule extends AbstractModule {
+    @Override
+    protected void configure() {
+      install(RedirectAdminRegistrationLifecycleListener.sysModule(LIB_MODULE_COMPONENT_NAME));
+    }
+  }
 
   @Test
   @GerritConfig(name = "auth.type", value = "DEVELOPMENT_BECOME_ANY_ACCOUNT")
@@ -58,5 +77,35 @@ public class GerritBslLicenseIT extends LightweightPluginDaemonTest {
   public void adminAlreadyLoggedInCallsAreNotRedirected() throws Exception {
     assertThat(adminRestSession.get("/login?account_id=" + admin.id().id()).getStatusCode())
         .isNotEqualTo(SC_MOVED_TEMPORARILY);
+  }
+
+  @Test
+  @GerritConfig(name = "gerrit.installModule", value = LIB_MODULE_CLASS_NAME)
+  @GerritConfig(name = "auth.type", value = "DEVELOPMENT_BECOME_ANY_ACCOUNT")
+  public void pluginAndLibModuleAdminLoginIsRedirectedOnceListingBoth() throws Exception {
+    RestResponse response = anonymousRestSession.get("/login?account_id=" + admin.id().id());
+
+    assertThat(response.getStatusCode()).isEqualTo(SC_MOVED_TEMPORARILY);
+    String location = response.getHeader(LOCATION);
+    assertThat(location).startsWith(RedirectAdminsToBslUrl.BSL_BASE_URL);
+
+    Map<String, String> params =
+        URLEncodedUtils.parse(URI.create(location), StandardCharsets.UTF_8).stream()
+            .collect(Collectors.toMap(NameValuePair::getName, NameValuePair::getValue));
+    assertThat(Arrays.asList(params.get("plugin").split(",")))
+        .containsExactly("gerrit-bsl-license", LIB_MODULE_COMPONENT_NAME);
+    assertThat(params.get("returnURL")).doesNotContain(RedirectAdminsToBslUrl.BSL_BASE_URL);
+  }
+
+  @Test
+  @NoHttpd
+  @GerritConfig(name = "gerrit.installModule", value = LIB_MODULE_CLASS_NAME)
+  @GerritConfig(name = "auth.type", value = "DEVELOPMENT_BECOME_ANY_ACCOUNT")
+  public void pluginAndBslLibModuleDoesImpactGerritWithoutHttpDaemon() throws Exception {
+    assertThat(server.getHttpdInjector()).isEmpty();
+
+    AdHocPluginHackForLibModule pluginHackForLibModule =
+        server.getTestInjector().getInstance(AdHocPluginHackForLibModule.class);
+    assertThat(pluginHackForLibModule.webLoginListeners).isNull();
   }
 }
