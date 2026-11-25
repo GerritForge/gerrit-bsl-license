@@ -52,15 +52,18 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
   private final PermissionBackend permissionBackend;
   private final String canonicalWebUrl;
   private final PluginSetContext<WebLoginListener> pluginsWebLoginListeners;
+  private final LicenseCheck licenseCheck;
 
   @Inject
   RedirectAdminsToBslUrl(
       PermissionBackend permissionBackend,
       @CanonicalWebUrl String canonicalWebUrl,
-      PluginSetContext<WebLoginListener> pluginsWebLoginListeners) {
+      PluginSetContext<WebLoginListener> pluginsWebLoginListeners,
+      LicenseCheck licenseCheck) {
     this.permissionBackend = permissionBackend;
     this.canonicalWebUrl = canonicalWebUrl;
     this.pluginsWebLoginListeners = pluginsWebLoginListeners;
+    this.licenseCheck = licenseCheck;
   }
 
   @Override
@@ -130,7 +133,7 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
   }
 
   private boolean hasValidLicence() {
-    return false;
+    return licenseCheck.isValid();
   }
 
   @Override
