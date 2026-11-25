@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "343c749c_400af257",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T14:43:51Z",
+      "side": 1,
+      "message": "Not used anymore.",
+      "parentUuid": "b8b8a3ea_1de796be",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a371795a_08d4e55f",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2026-11-25T13:41:55Z",
       "side": 1,
       "message": "`CanonicalWebUrl` is `nullable`:\n\n```\n/**\n * Marker on a {@link String} holding the canonical address for this server.\n *\n * \u003cp\u003eNote that the String may be null, if the administrator has not configured the value and we are\n * not in an HTTP request where the URL can be guessed from the request state. Clients must handle\n * such cases explicitly.\n */\n```",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5934b668_26bfe073",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T14:43:51Z",
+      "side": 1,
+      "message": "True, let me skip the path in that case.",
+      "parentUuid": "a371795a_08d4e55f",
       "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -77,6 +113,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26eb55aa_5a1e78c8",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T14:43:51Z",
+      "side": 1,
+      "message": "Nope, that\u0027s not a concern.",
+      "parentUuid": "ddb039ef_36b66c2d",
+      "range": {
+        "startLine": 101,
+        "startChar": 57,
+        "endLine": 101,
+        "endChar": 82
+      },
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2297236_60d7ae75",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T14:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3335ef45_8ef1607c",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e7cc0fd_c26c4bee",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
         "patchSetId": 5
@@ -88,6 +166,24 @@
       "writtenOn": "2026-11-25T13:41:55Z",
       "side": 1,
       "message": "If the certificate expired say, 1 hour ago or 23 hours ago, this would still round up to `0` and be considered valid.\n\nDo we have `cert.checkValidity()` at disposal?",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90865a4c_b0bd2313",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T14:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7cc0fd_c26c4bee",
       "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
