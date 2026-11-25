@@ -36,6 +36,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6983e535_472c1c03",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T15:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343c749c_400af257",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a371795a_08d4e55f",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "True, let me skip the path in that case.",
       "parentUuid": "a371795a_08d4e55f",
+      "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59369ed0_e4ad1242",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-25T15:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5934b668_26bfe073",
       "revId": "5696fd497d9ae238244d3cd61281e63568fbe80c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
