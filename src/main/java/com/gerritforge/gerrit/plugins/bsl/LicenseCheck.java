@@ -12,8 +12,9 @@
 package com.gerritforge.gerrit.plugins.bsl;
 
 import com.google.inject.ImplementedBy;
+import java.util.Set;
 
 @ImplementedBy(X509LicenseCheck.class)
-public interface LicenseCheck {
-  boolean isValid();
+interface LicenseCheck {
+  Set<String> pluginsWithValidLicense();
 }

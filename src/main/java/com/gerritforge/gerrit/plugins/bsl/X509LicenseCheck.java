@@ -11,6 +11,7 @@
 
 package com.gerritforge.gerrit.plugins.bsl;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.common.Nullable;
 import com.google.gerrit.server.config.CanonicalWebUrl;
@@ -32,12 +33,14 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateExpiredException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.CertificateNotYetValidException;
+import java.security.cert.CertificateParsingException;
 import java.security.cert.PKIXCertPathValidatorResult;
 import java.security.cert.PKIXParameters;
 import java.security.cert.TrustAnchor;
 import java.security.cert.X509Certificate;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -48,14 +51,18 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Singleton
-public class X509LicenseCheck implements LicenseCheck {
+class X509LicenseCheck implements LicenseCheck {
   public static final String BSL_LICENSE_FILE = "gerritforge-bsl-license.cer";
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private static final String GERRIT_FORGE_BSL_CA_ROOT_1 =
       "CN=GerritForge BSL CA Root1,OU=GerritForge CA,O=GerritForge"
           + " Inc.,L=Sunnyvale,ST=California,C=US";
   private static final Pattern X509_CN_PATTERN = Pattern.compile("CN=([^,]+)");
+  private static final int X509_CERT_EXT_DNS_TYPE =
+      2; // The GeneralNameInterface.NAME_DNS value, inaccessible because of being an internal
+  // package
   public static final String GERRITFORGE_BSL_ROOT_CER = "/gerritforge-bsl-root.cer";
+  public static final Set<String> NO_LICENSED_BSL_PLUGINS = Set.of();
 
   private final Path bslLicensePath;
   private final Provider<String> canonicalWebUrlProvider;
@@ -67,10 +74,12 @@ public class X509LicenseCheck implements LicenseCheck {
   }
 
   @Override
-  public boolean isValid() {
+  public Set<String> pluginsWithValidLicense() {
+    ImmutableSet.Builder<String> licensedPluginsBuilder = ImmutableSet.builder();
+
     File licenseFile = bslLicensePath.toFile();
     if (!licenseFile.exists()) {
-      return false;
+      return NO_LICENSED_BSL_PLUGINS;
     }
 
     Optional<String> canonicalWebUrl =
@@ -79,7 +88,7 @@ public class X509LicenseCheck implements LicenseCheck {
     if (canonicalWebUrl.isEmpty()) {
       logger.atWarning().log(
           "[BSL License] canonicalWebUrl is empty in gerrit.config, no license check is possible");
-      return false;
+      return NO_LICENSED_BSL_PLUGINS;
     }
 
     try (FileInputStream bundleStream = new FileInputStream(licenseFile);
@@ -90,26 +99,40 @@ public class X509LicenseCheck implements LicenseCheck {
       List<X509Certificate> licenseCertificates =
           certFactory.generateCertificates(bundleStream).stream()
               .map(X509Certificate.class::cast)
+              // Prevent hijacking a root certificate into the license file
               .filter(X509LicenseCheck::notSelfSignedCertificate)
               .toList();
 
-      PKIXCertPathValidatorResult validationResult =
-          validateAgainstGerritForgeRootCertificate(
-              certFactory, rootCertStream, licenseCertificates);
-      if (!isGerritForgeIncRootCert(validationResult.getTrustAnchor().getTrustedCert())) {
-        return false;
-      }
+      Set<TrustAnchor> trustAnchors =
+          certFactory.generateCertificates(rootCertStream).stream()
+              .map(X509Certificate.class::cast)
+              .map(c -> new TrustAnchor(c, null))
+              .collect(Collectors.toSet());
+
+      Instant now = Instant.now();
 
       for (X509Certificate cert : licenseCertificates) {
         try {
-          cert.checkValidity();
+          PKIXCertPathValidatorResult validationResult =
+              validateAgainstGerritForgeRootCertificate(certFactory, trustAnchors, cert);
+          if (!isGerritForgeIncRootCert(validationResult.getTrustAnchor().getTrustedCert())) {
+            continue;
+          }
         } catch (CertificateExpiredException | CertificateNotYetValidException e) {
           logger.atSevere().withCause(e).log(
               "[BSL License] X.509 certificate '%s' outside its validity period",
               cert.getSubjectX500Principal().getName());
           continue;
+        } catch (CertPathValidatorException
+            | CertificateException
+            | InvalidAlgorithmParameterException
+            | NoSuchAlgorithmException e) {
+          logger.atSevere().withCause(e).log(
+              "[BSL License] Unable to verify X.509 certificate license '%s'", cert);
+          continue;
         }
 
+        Set<String> licensedPlugins = = getSubjectAltNames(cert);
         String certSubjectDN = cert.getSubjectX500Principal().getName();
 
         Optional<URI> canonicalWebUri = canonicalWebUrl.map(URI::create);
@@ -132,50 +155,34 @@ public class X509LicenseCheck implements LicenseCheck {
         String x509CertName = cert.getSubjectX500Principal().getName();
         logger.atFine().log(
             "[BSL License] X.509 Certificate %s has expiry date %s", x509CertName, notAfter);
-        long numberOfDaysToExpire = Duration.between(Instant.now(), notAfter.toInstant()).toDays();
-        if (numberOfDaysToExpire >= 0) {
-          logger.atInfo().log(
-              "[BSL License] X.509 Certificate %s is valid and has %d days left",
-              x509CertName, numberOfDaysToExpire);
-          return true;
-        }
-
-        logger.atWarning().log("[BSL License] X.509 Certificate for %s **EXPIRED**", x509CertName);
+        long numberOfDaysToExpire = Duration.between(now, notAfter.toInstant()).toDays();
+        logger.atInfo().log(
+            "[BSL License] X.509 Certificate %s for plugins %s is valid and has %d days left",
+            x509CertName, licensedPlugins, numberOfDaysToExpire);
+        licensedPluginsBuilder.addAll(licensedPlugins);
       }
-      return false;
-    } catch (IOException e) {
+
+      return licensedPluginsBuilder.build();
+    } catch (IOException | CertificateException e) {
       logger.atSevere().withCause(e).log("[BSL License] Unable to verify BSL license file");
-      return false;
-    } catch (CertPathValidatorException
-        | CertificateException
-        | InvalidAlgorithmParameterException
-        | NoSuchAlgorithmException e) {
-      logger.atSevere().withCause(e).log(
-          "[BSL License] Unable to verify X.509 certificate license");
-      return false;
+      return NO_LICENSED_BSL_PLUGINS;
     }
   }
 
   private static PKIXCertPathValidatorResult validateAgainstGerritForgeRootCertificate(
       CertificateFactory certFactory,
-      InputStream rootCertStream,
-      List<X509Certificate> licenseCertificates)
+      Set<TrustAnchor> trustAnchors,
+      X509Certificate licenseCertificate)
       throws CertificateException,
           InvalidAlgorithmParameterException,
           CertPathValidatorException,
           NoSuchAlgorithmException {
-    Set<TrustAnchor> trustAnchors =
-        certFactory.generateCertificates(rootCertStream).stream()
-            .map(X509Certificate.class::cast)
-            .map(c -> new TrustAnchor(c, null))
-            .collect(Collectors.toSet());
-
     var params = new PKIXParameters(trustAnchors);
     params.setRevocationEnabled(false);
 
     return (PKIXCertPathValidatorResult)
         CertPathValidator.getInstance("PKIX")
-            .validate(certFactory.generateCertPath(licenseCertificates), params);
+            .validate(certFactory.generateCertPath(List.of(licenseCertificate)), params);
   }
 
   private static boolean notSelfSignedCertificate(X509Certificate c) {
@@ -188,5 +195,18 @@ public class X509LicenseCheck implements LicenseCheck {
         .flatMap(n -> Optional.ofNullable(n.getName()))
         .stream()
         .anyMatch(n -> n.contains(GERRIT_FORGE_BSL_CA_ROOT_1));
+  }
+
+  private Set<String> getSubjectAltNames(X509Certificate cert) throws CertificateParsingException {
+    Collection<List<?>> certsAlternativeNames = cert.getSubjectAlternativeNames();
+    if (certsAlternativeNames == null) {
+      return NO_LICENSED_BSL_PLUGINS;
+    }
+    return certsAlternativeNames.stream()
+        .filter(ext -> ext.get(0).equals(X509_CERT_EXT_DNS_TYPE))
+        .map(ext -> ext.get(1))
+        .map(String.class::cast)
+        .map(s -> s.toLowerCase(Locale.ROOT))
+        .collect(Collectors.toSet());
   }
 }
