@@ -17,6 +17,7 @@ import static javax.servlet.http.HttpServletResponse.SC_MOVED_PERMANENTLY;
 import static javax.servlet.http.HttpServletResponse.SC_MOVED_TEMPORARILY;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Sets;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.gerrit.server.IdentifiedUser;
@@ -71,10 +72,16 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
       throws IOException {
     if (isLoginRedirect(response)
         && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER)
-        && !hasValidLicence()
         && needsBslRedirection(request)) {
+      Set<String> licensedPlugins = licenseCheck.pluginsWithValidLicense();
+      Set<String> pluginsWithWebLoginFilters = allPluginsBslRedirects();
+      Set<String> unlicensedPlugins = Sets.difference(pluginsWithWebLoginFilters, licensedPlugins);
+      if (unlicensedPlugins.isEmpty()) {
+        return;
+      }
+
       String callbackLocation = Strings.nullToEmpty(response.getHeader(LOCATION));
-      String redirectUrl = buildRedirectUrl(callbackLocation);
+      String redirectUrl = buildRedirectUrl(callbackLocation, unlicensedPlugins);
       response.setHeader(LOCATION, redirectUrl);
 
       logger.atWarning().log(
@@ -101,6 +108,7 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
             false)
         .filter(RedirectAdminsToBslUrl::isRedirectAdminsToBslUrlFilter)
         .map(PluginSetEntryContext::getPluginName)
+        .map(String::toLowerCase)
         .collect(Collectors.toSet());
   }
 
@@ -114,10 +122,9 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
     return responseStatus == SC_MOVED_TEMPORARILY || responseStatus == SC_MOVED_PERMANENTLY;
   }
 
-  private String buildRedirectUrl(String responseLocation) {
+  private String buildRedirectUrl(String responseLocation, Set<String> unlicensedPlugins) {
     StringBuilder url = new StringBuilder(BSL_BASE_URL);
-    Set<String> pluginsWithWebLoginFilters = allPluginsBslRedirects();
-    String bslPluginNames = String.join(",", pluginsWithWebLoginFilters);
+    String bslPluginNames = String.join(",", unlicensedPlugins);
     url.append("?plugin=").append(URLEncoder.encode(bslPluginNames, StandardCharsets.UTF_8));
 
     URI requestUri;
@@ -130,10 +137,6 @@ public class RedirectAdminsToBslUrl implements WebLoginListener {
     url.append("&returnURL=")
         .append(URLEncoder.encode(requestUri.toString(), StandardCharsets.UTF_8));
     return url.toString();
-  }
-
-  private boolean hasValidLicence() {
-    return licenseCheck.isValid();
   }
 
   @Override
