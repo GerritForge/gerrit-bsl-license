@@ -14,6 +14,7 @@ package com.gerritforge.gerrit.plugins.bsl;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.gerrit.server.plugins.PluginGuiceEnvironment;
+import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Key;
@@ -21,6 +22,8 @@ import com.google.inject.Module;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Named;
+import java.time.Instant;
+import java.util.function.Consumer;
 
 /**
  * Provide access to DynamicSet<WebloginListener> without having direct access to the WebInjector
@@ -62,7 +65,18 @@ public class AdHocPluginHackForLibModule {
   public void injectMembers() {
     Module httpModule = pluginGuiceEnvironment.getHttpModule();
     if (httpModule != null) {
-      Injector webInjector = injector.createChildInjector(httpModule);
+      Injector webInjector =
+          injector.createChildInjector(
+              httpModule,
+              new AbstractModule() {
+                @Override
+                public void configure() {
+                  bind(Instant.class).annotatedWith(InstantNow.class).toProvider(Instant::now);
+                  bind(Key.get(new TypeLiteral<Consumer<String>>() {})
+                          .withAnnotation(ErrorConsumer.class))
+                      .toInstance(e -> {});
+                }
+              });
       webLoginListeners =
           webInjector.getInstance(Key.get(new TypeLiteral<DynamicSet<WebLoginListener>>() {}));
       redirectAdminsToBslUrl = webInjector.getInstance(RedirectAdminsToBslUrl.class);

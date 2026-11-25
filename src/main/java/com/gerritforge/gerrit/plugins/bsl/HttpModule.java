@@ -11,14 +11,27 @@
 
 package com.gerritforge.gerrit.plugins.bsl;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.inject.AbstractModule;
+import com.google.inject.Key;
+import com.google.inject.TypeLiteral;
+import java.time.Instant;
+import java.util.function.Consumer;
 
 public class HttpModule extends AbstractModule {
 
   @Override
   protected void configure() {
+    configureRedirectOnLogin();
+    bind(Instant.class).annotatedWith(InstantNow.class).toProvider(Instant::now);
+    bind(Key.get(new TypeLiteral<Consumer<String>>() {}).withAnnotation(ErrorConsumer.class))
+        .toInstance(e -> {});
+  }
+
+  @VisibleForTesting
+  protected void configureRedirectOnLogin() {
     DynamicSet.bind(binder(), WebLoginListener.class).to(RedirectAdminsToBslUrl.class);
   }
 }
