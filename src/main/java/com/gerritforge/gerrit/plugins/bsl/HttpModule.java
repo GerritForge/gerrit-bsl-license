@@ -11,6 +11,7 @@
 
 package com.gerritforge.gerrit.plugins.bsl;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.httpd.WebLoginListener;
 import com.google.inject.AbstractModule;
@@ -19,6 +20,12 @@ public class HttpModule extends AbstractModule {
 
   @Override
   protected void configure() {
+    configureRedirectOnLogin();
+    install(X509LicenseCheck.module());
+  }
+
+  @VisibleForTesting
+  protected void configureRedirectOnLogin() {
     DynamicSet.bind(binder(), WebLoginListener.class).to(RedirectAdminsToBslUrl.class);
   }
 }
