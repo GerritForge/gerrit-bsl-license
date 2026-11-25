@@ -1,5 +1,4 @@
-package(default_visibility = ["//visibility:public"])
-
+load("//tools/bzl:javadoc.bzl", "java_doc")
 load("//tools/bzl:junit.bzl", "junit_tests")
 load(
     "//tools/bzl:plugin.bzl",
@@ -7,11 +6,13 @@ load(
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
-load("//tools/bzl:javadoc.bzl", "java_doc")
+
+package(default_visibility = ["//visibility:public"])
 
 gerrit_plugin(
     name = "gerrit-bsl-license",
     srcs = glob(["src/main/java/**/*.java"]),
+    resources = glob(["src/main/resources/**/*.cer"]),
     deps = [],
 )
 
