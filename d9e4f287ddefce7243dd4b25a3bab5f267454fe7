@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4514bc_47c9b634",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T10:10:25Z",
+      "side": 1,
+      "message": "This is what makes the tests fail\n```\nplugins/gerrit-bsl-license/src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java:135: error: illegal start of expression\n        Set\u003cString\u003e licensedPlugins \u003d \u003d getSubjectAltNames(cert);\n```",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "d9e4f287ddefce7243dd4b25a3bab5f267454fe7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
