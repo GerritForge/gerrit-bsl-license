@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23f3a39_eca4bd97",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this validation failure report an error through the new consumer as well?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 37
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18edb466_3fe20a30",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this validation failure report an error through the new consumer as well?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31df6d58_b25b32b0",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Rather than inspecting the underlying exception cause, consider `usingCertPathValidatorException.getReason()` [1]\n\n\n[1] https://docs.oracle.com/javase/8/docs/api/java/security/cert/CertPathValidatorException.html#getReason--",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 60
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afcc9b2e_89f22b23",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Why move `getSubjectAltNames()` outside the certificate try/catch block and remove `CertificateException` from its `catch` block?\n\nIf either certificate path creation or `SAN` extraction fails, we now discard all previously validated licenses instead of skipping the problematic certificate?",
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a20dba_80398474",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Can we also cover a mix of valid and expired certificates?\n\nThese are the main features introduced by the previous change, but currently all new tests use a single certificate.",
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e144544_6ebc1fc2",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "nit: Could we move the PEM certificates into test resources and document how they were generated?\n\n````\nsrc/test/resources/\n  certificates/\n    valid-license.pem\n    wrong-host.pem\n    wrong-plugin.pem\n    untrusted-ca.pem\n```\n\nI think it would improve readability and make it easier to maintain or extend the certificate fixtures.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525b357c_11536ffb",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "nit: Could we use `Instant.parse()` rather than hardcoded epoch milliseconds? It would make the test dates much easier to read and verify against the certificate validity period.\n\n```\nprivate static final Instant WITHIN_VALIDITY_PERIOD \u003d\n    Instant.parse(\"2026-11-26T00:00:00Z\");\n\nprivate static final Instant AFTER_VALIDITY_PERIOD \u003d\n    Instant.parse(\"2027-11-25T00:00:00Z\");\n```",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 77
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6efb03f_b5f5631a",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "Since we now support multiple certificates, shouldn\u0027t we collect all validation errors rather than just retaining the last one?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 88
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fb335b_98eb30da",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "nit: these are static; are they not going to be shared across tests _if_ they run in parallel?\nThe test scenarios are not isolated if tests execute concurrently.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 88
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8cfcf39_dbdfd2e3",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T09:52:53Z",
+      "side": 1,
+      "message": "I decoded the `X509_LICENSE_FILE_CERTIFICATE_SIGNED_BY_ANOTHER_CA` certificate.\n\n```\nopenssl x509 -in certificate.pem -text -noout\n```\n\nIt looks like it does not contain a SAN extension?\n\n```\nX509v3 extensions:\n            X509v3 Basic Constraints:\n                CA:FALSE\n            Netscape Comment:\n                OpenSSL Generated Certificate\n            X509v3 Subject Key Identifier:\n                35:2F:E6:CC:53:13:75:52:A2:33:6E:33:01:6E:71:BC:AC:77:E4:48\n            X509v3 Authority Key Identifier:\n                50:C9:69:B2:54:78:25:10:26:6E:29:89:45:BD:10:5D:4F:25:3E:F2\n```\n\nIt does not have:\n\n```\n            X509v3 Subject Alternative Name:\n                DNS:gerrit-bsl-license\n```\n\nIn that case, it wouldn\u0027t license the installed plugin even if its CA were trusted, right?",
+      "range": {
+        "startLine": 286,
+        "startChar": 32,
+        "endLine": 286,
+        "endChar": 82
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
