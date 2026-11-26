@@ -286,6 +286,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d268afc_5a24b10d",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T13:39:40Z",
+      "side": 1,
+      "message": "`LightweightPluginDaemonTest` doesn\u0027t support concurrent execution anyway.",
+      "parentUuid": "44fb335b_98eb30da",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 88
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8cfcf39_dbdfd2e3",
@@ -299,6 +323,30 @@
       "writtenOn": "2026-11-26T09:52:53Z",
       "side": 1,
       "message": "I decoded the `X509_LICENSE_FILE_CERTIFICATE_SIGNED_BY_ANOTHER_CA` certificate.\n\n```\nopenssl x509 -in certificate.pem -text -noout\n```\n\nIt looks like it does not contain a SAN extension?\n\n```\nX509v3 extensions:\n            X509v3 Basic Constraints:\n                CA:FALSE\n            Netscape Comment:\n                OpenSSL Generated Certificate\n            X509v3 Subject Key Identifier:\n                35:2F:E6:CC:53:13:75:52:A2:33:6E:33:01:6E:71:BC:AC:77:E4:48\n            X509v3 Authority Key Identifier:\n                50:C9:69:B2:54:78:25:10:26:6E:29:89:45:BD:10:5D:4F:25:3E:F2\n```\n\nIt does not have:\n\n```\n            X509v3 Subject Alternative Name:\n                DNS:gerrit-bsl-license\n```\n\nIn that case, it wouldn\u0027t license the installed plugin even if its CA were trusted, right?",
+      "range": {
+        "startLine": 286,
+        "startChar": 32,
+        "endLine": 286,
+        "endChar": 82
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf8ddf9_c7eb8890",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T13:39:40Z",
+      "side": 1,
+      "message": "Exactly, the extension isn\u0027t relevant anyway because it has to be dropped *before* parsing the extensions.",
+      "parentUuid": "e8cfcf39_dbdfd2e3",
       "range": {
         "startLine": 286,
         "startChar": 32,
