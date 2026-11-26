@@ -62,7 +62,7 @@ public class AdHocPluginHackForLibModule {
   public void injectMembers() {
     Module httpModule = pluginGuiceEnvironment.getHttpModule();
     if (httpModule != null) {
-      Injector webInjector = injector.createChildInjector(httpModule);
+      Injector webInjector = injector.createChildInjector(httpModule, X509LicenseCheck.module());
       webLoginListeners =
           webInjector.getInstance(Key.get(new TypeLiteral<DynamicSet<WebLoginListener>>() {}));
       redirectAdminsToBslUrl = webInjector.getInstance(RedirectAdminsToBslUrl.class);
