@@ -22,6 +22,30 @@
       },
       "revId": "c0712f13af2449ddf5ea36dedac71ddf60d54d76",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae31fb61_5b0696e1",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T08:59:41Z",
+      "side": 1,
+      "message": "Agreed, that\u0027s dead code. I thought I\u0027d removed it, but I didn\u0027t. Let me get rid of it.",
+      "parentUuid": "bc803add_329de1fc",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "c0712f13af2449ddf5ea36dedac71ddf60d54d76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
