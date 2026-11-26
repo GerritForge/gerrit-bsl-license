@@ -217,6 +217,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbdffbc8_29edb4b9",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T14:07:21Z",
+      "side": 1,
+      "message": "Yeah, that would be nice; however, Bazel is blocking us from accessing physical resources on disk; therefore, it is way easier to leave them inline.\n\nWith regard to copying and pasting them to disk, it\u0027s trivial and can be done by hand if needed to understand what they are.",
+      "parentUuid": "9e144544_6ebc1fc2",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "525b357c_11536ffb",
