@@ -27,7 +27,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.jspecify.annotations.NonNull;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -154,7 +153,7 @@ public class X509LicenseCheckTest {
         .isEqualTo(X509LicenseCheck.LICENSED_BSL_PLUGINS_CERT_NOT_VALID_MSG);
   }
 
-  private @NonNull Path bslLicensePath(CharSequence... licenseCerts) throws IOException {
+  private Path bslLicensePath(CharSequence... licenseCerts) throws IOException {
     return Files.writeString(tempFolder.newFile().toPath(), String.join("\n", licenseCerts));
   }
 }
