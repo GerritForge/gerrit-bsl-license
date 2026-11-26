@@ -48,6 +48,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "312beb14_2c371a46",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T22:14:14Z",
+      "side": 1,
+      "message": "Actually, I managed to cover this condition in the unit test; therefore, the error can be collected.",
+      "parentUuid": "10196138_6c0bebf4",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 37
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18edb466_3fe20a30",
