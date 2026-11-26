@@ -194,6 +194,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ae4c07_4f3bd4cb",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T22:11:48Z",
+      "side": 1,
+      "message": "I believe all possible combinations of certificates are best tested in unit tests; the overall IT test should only cover the E2E functionality.\n\nAdded a more fine-grained set of unit tests for `X509LicenseCheck`.",
+      "parentUuid": "69a20dba_80398474",
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e144544_6ebc1fc2",
@@ -350,6 +368,30 @@
       "parentUuid": "44fb335b_98eb30da",
       "range": {
         "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 88
+      },
+      "revId": "97164ee5a146b0b7091a421c8a7110d3b8d5b909",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a4b531_8bb7c1ba",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/bsl/GerritBslLicenseIT.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T22:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6efb03f_b5f5631a",
+      "range": {
+        "startLine": 175,
         "startChar": 0,
         "endLine": 175,
         "endChar": 88
