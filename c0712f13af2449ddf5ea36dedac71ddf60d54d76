@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc803add_329de1fc",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-11-26T08:06:40Z",
+      "side": 1,
+      "message": "Woudn\u0027t an expired certificate cause `CertPathValidatorException` before this explicit cert.checkValidity() is reached?\n\nin `validateAgainstGerritForgeRootCertificate` we call\n```\n        CertPathValidator.getInstance(\"PKIX\")\n            .validate(certFactory.generateCertPath(List.of(licenseCertificate)), params);\n```",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "c0712f13af2449ddf5ea36dedac71ddf60d54d76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
