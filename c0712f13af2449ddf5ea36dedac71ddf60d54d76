@@ -46,6 +46,30 @@
       },
       "revId": "c0712f13af2449ddf5ea36dedac71ddf60d54d76",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2be427_d1e2e9e2",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/bsl/X509LicenseCheck.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-11-26T08:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae31fb61_5b0696e1",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "c0712f13af2449ddf5ea36dedac71ddf60d54d76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
